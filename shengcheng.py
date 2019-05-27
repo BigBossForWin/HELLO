@@ -87,4 +87,4 @@ def main(text='', font_size = 20, edge_len = 60,pic_dir = "./user", out_dir = ".
         img_ascii.save(out_dir + os.path.sep + '_'.join(text) + '.png')
 
 if __name__ == '__main__':
-    main(text='tang')
+    main(text='戴嘉翘')
