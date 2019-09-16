@@ -1,23 +1,18 @@
 import os
 from PIL import Image
-
 '''
 把目录下的图片拼接成一张大图片
 '''
-
 # 图片压缩后的大小
 width_i = 200
 height_i = 300
-
 # 每行每列显示图片数量
 line_max = 5
 row_max = 5
-
 # 参数初始化
 all_path = []
 num = 0
 pic_max = line_max * row_max
-
 for filename in os.listdir('./images'):
     # os.listdir() 方法用于返回指定的文件夹包含的文件或文件夹的名字的列表。
     # 这个列表以字母顺序。 它不包括 '.' 和'..' 即使它在文件夹中
@@ -33,17 +28,14 @@ toImage = Image.new('RGBA', (width_i * line_max, height_i * row_max))
 # 则图片不会初始化，以便于画图或复制图片。
 for i in range(0, row_max):
     for j in range(0, line_max):
-
         # 图片比计划的少
         if num >= len(all_path):
             print("breadk")
             break
-
         pic_fole_head = Image.open(all_path[num])
         # print(pic_fole_head)
         #  <PIL.PngImagePlugin.PngImageFile image mode=RGBA size=200x300 at 0x1EA89E8>
         width, height = pic_fole_head.size
-
         tmppic = pic_fole_head.resize((width_i, height_i))
         # 返回一个调整过大小的图片的复制品。size参数给出一个，以像素为单位的二维元组（weight, height）
         # 参数filter可以是NEAREST（使用临近取样）
@@ -57,7 +49,6 @@ for i in range(0, row_max):
         # 如果提供了4维元组，被粘贴的图片必须与这个元组所确定的的区域的尺寸相符
         num = num + 1
         # 计数
-
     # 图片比计划的多
     if num >= pic_max:
         break
